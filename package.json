@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "esbuild": "0.19.11",
+    "http-proxy-middleware": "^2.0.6",
+    "nodemon": "^3.0.2",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "scripts": {
+    "clean": "rm -rf out/",
+    "dev:server": "esbuild src/server.js --loader:.js=jsx --bundle --sourcemap --platform=node --outdir=out --watch",
+    "dev:client": "esbuild src/public/* --loader:.js=jsx --loader:.html=copy --sourcemap --bundle --outdir=out/public --serve=9000",
+    "dev:nodemon": "nodemon out/server.js",
+    "dev": "run-p dev:*"
+  }
+}
