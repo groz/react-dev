@@ -10,9 +10,5 @@ function App() {
     )
 }
 
-const rootNode = document.getElementById('root');
-const root = createRoot(rootNode);
+const root = createRoot(document.getElementById('root'));
 root.render(<App />);
-
-// Set up live reload. TODO: only run this in dev mode.
-new EventSource('/esbuild').addEventListener('change', () => location.reload());
