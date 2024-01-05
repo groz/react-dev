@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 function App() {
     return (
         <>
-            <h1>This is my ap1p.</h1>
+            <h1>This is my app with hot reload!</h1>
             <span> My app is amazing</span>
         </>
     )
@@ -13,3 +13,6 @@ function App() {
 const rootNode = document.getElementById('root');
 const root = createRoot(rootNode);
 root.render(<App />);
+
+// Set up live reload. TODO: only run this in dev mode.
+new EventSource('/esbuild').addEventListener('change', () => location.reload());

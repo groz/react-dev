@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "esbuild": "0.19.11",
     "http-proxy-middleware": "^2.0.6",
     "nodemon": "^3.0.2",
@@ -14,8 +15,8 @@
   "scripts": {
     "clean": "rm -rf out/",
     "dev:server": "esbuild src/server.js --loader:.js=jsx --bundle --sourcemap --platform=node --outdir=out --watch",
-    "dev:client": "esbuild src/public/* --loader:.js=jsx --loader:.html=copy --sourcemap --bundle --outdir=out/public --serve=9000",
+    "dev:client": "esbuild src/public/* --loader:.js=jsx --loader:.html=copy --sourcemap --bundle --outdir=out/public --watch --serve=9000",
     "dev:nodemon": "nodemon out/server.js",
-    "dev": "run-p dev:*"
+    "dev": "cross-env NODE_ENV=development run-p dev:*"
   }
 }
