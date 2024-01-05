@@ -14,8 +14,8 @@
   },
   "scripts": {
     "clean": "rm -rf out/",
-    "dev:server": "esbuild src/server.js --loader:.js=jsx --bundle --sourcemap --platform=node --outdir=out --watch",
-    "dev:client": "esbuild src/public/* --loader:.js=jsx --loader:.html=copy --sourcemap --bundle --outdir=out/public --watch --serve=9000",
+    "dev:server": "esbuild src/server.js --loader:.js=jsx --bundle --sourcemap --platform=node --drop-labels=PROD --outdir=out --watch",
+    "dev:client": "esbuild src/public/* --loader:.js=jsx --loader:.html=copy --sourcemap --bundle --drop-labels=PROD --outdir=out/public --watch --serve=9000",
     "dev:nodemon": "nodemon out/server.js",
     "dev": "cross-env NODE_ENV=development run-p dev:*"
   }

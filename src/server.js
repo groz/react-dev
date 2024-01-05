@@ -16,7 +16,7 @@ const compressionOptions = isDev ? {
     filter: (req, res) => !req.url.includes('/esbuild') && compression.filter(req, res)
 } : {};
 
-app.use(compression(compressionOptions));
+PROD: app.use(compression(compressionOptions));
 
 // Note: define app routes before proxy setup.
 app.get('/what', (req, res) => {
@@ -24,16 +24,10 @@ app.get('/what', (req, res) => {
 });
 
 // Proxy client requests to esbuild in dev mode.
-if (isDev) {
-    app.use('/', createProxyMiddleware(`http://localhost:${esbuild_port}`));
-} else {
-    app.use(express.static(publicPath));
-}
+DEV: app.use('/', createProxyMiddleware(`http://localhost:${esbuild_port}`));
+PROD: app.use(express.static(publicPath));
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
-
-    if (isDev) {
-        console.log('Development mode with live reload enabled.');
-    }
+    DEV: console.log('Development mode with live reload enabled.');
 });

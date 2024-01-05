@@ -12,3 +12,13 @@ function App() {
 
 const root = createRoot(document.getElementById('root'));
 root.render(<App />);
+
+DEV: (function setupHotReload() {
+    const evtSrc = new EventSource('/esbuild');
+
+    evtSrc.addEventListener('change', (e) => location.reload());
+
+    evtSrc.addEventListener('open', (e) => {
+        console.log('Hot reload enabled...');
+    });
+})();
