@@ -6,17 +6,22 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 const port = 3000;
 const esbuild_port = 9000;
-const isDev = process.env.NODE_ENV === 'development'
 
 const publicPath = path.join(__dirname, '/public');
 
 // Compression middleware doesn't work with SSE.
 // See: https://github.com/expressjs/compression#server-sent-events
-const compressionOptions = isDev ? {
-    filter: (req, res) => !req.url.includes('/esbuild') && compression.filter(req, res)
-} : {};
-
-PROD: app.use(compression(compressionOptions));
+DEV: app.use(compression(
+    {
+        filter: function excludeHotReload(req, res) {
+            if (req.url.includes('/esbuild')) {
+                return false;
+            }
+            return compression.filter(req, res);
+        }
+    }
+));
+PROD: app.use(compression());
 
 // Note: define app routes before proxy setup.
 app.get('/what', (req, res) => {

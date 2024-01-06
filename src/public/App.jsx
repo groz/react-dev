@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 function App() {
     return (
         <>
-            <h1>This is my app with hot reload!</h1>
+            <h1>This is my app.</h1>
             <span> My app is amazing</span>
         </>
     )
