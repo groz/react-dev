@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 
 DEV: (function setupHotReload() {
@@ -13,7 +13,12 @@ DEV: (function setupHotReload() {
 })();
 
 const root = createRoot(document.getElementById("root"));
-root.render(<App />);
+DEV: root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+PROD: root.render(<App />);
 
 function App() {
   return <Game />;
