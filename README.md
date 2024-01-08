@@ -2,12 +2,12 @@
 
 Repository for learning react development via <https://react.dev> and the ecosystem.
 
-Focused 2 primary goals:
+Focused on 2 primary goals:
 
 - Quick dev iteration using esbuild with hot reloading
 - Maintaining 100 Lighthouse score in production builds
 
-The minimal setup captured in early commit 2aaa5354364f62af0f5e88bd7fd2aa640725380b.
+The minimal setup captured in early commit [2aaa5354364f62af0f5e88bd7fd2aa640725380b](https://github.com/groz/react-dev/tree/2aaa5354364f62af0f5e88bd7fd2aa640725380b).
 
 ## Dev setup
 
