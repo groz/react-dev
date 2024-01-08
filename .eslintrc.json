@@ -1,12 +1,12 @@
 {
-    "extends": "react-app",
-    "overrides": [
-        {
-            "files": "*",
-            "rules": {
-                "no-unused-labels": "off",
-                "no-labels": "off"
-            }
-        }
-    ]
+  "extends": "react-app",
+  "overrides": [
+    {
+      "files": "*",
+      "rules": {
+        "no-unused-labels": "off",
+        "no-labels": "off"
+      }
+    }
+  ]
 }
