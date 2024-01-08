@@ -1,6 +1,8 @@
 {
   "devDependencies": {
     "esbuild": "0.19.11",
+    "eslint": "^8.56.0",
+    "eslint-config-react-app": "^7.0.1",
     "http-proxy-middleware": "^2.0.6",
     "nodemon": "^3.0.2",
     "npm-run-all": "^4.1.5"
@@ -14,16 +16,13 @@
   },
   "scripts": {
     "clean": "rm -rf out/",
-
     "dev:hotreload:server": "esbuild src/server.js --loader:.js=jsx --bundle --sourcemap --platform=node --drop-labels=PROD --outdir=out --watch",
     "dev:hotreload:client": "esbuild src/public/* --loader:.js=jsx --loader:.html=copy --sourcemap --bundle --drop-labels=PROD --outdir=out/public --watch --serve=9000",
     "dev:hotreload:nodemon": "nodemon out/server.js",
     "start": "cross-env NODE_ENV=development run-p dev:hotreload:*",
-
     "dev:build:server": "esbuild src/server.js --loader:.js=jsx --bundle --sourcemap --platform=node --drop-labels=PROD --outdir=out",
     "dev:build:client": "esbuild src/public/* --loader:.js=jsx --loader:.html=copy --sourcemap --bundle --drop-labels=PROD --outdir=out/public",
     "dev:build": "run-s clean dev:build:server dev:build:client",
-
     "prod:build:server": "esbuild src/server.js --loader:.js=jsx --bundle --platform=node --minify --drop-labels=DEV --outdir=out",
     "prod:build:client": "esbuild src/public/* --loader:.js=jsx --loader:.html=copy --minify --bundle --drop-labels=DEV --outdir=out/public",
     "prod:build": "cross-env NODE_ENV=production run-s clean prod:build:server prod:build:client",
